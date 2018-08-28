@@ -37,7 +37,7 @@ var Client = exports.Client = function(args){
 
 };
 
-Client.prototype.execute = function(queryString, callback) {
+Client.prototype.execute = function(queryString) {
   var href = url.format({
     protocol: this.protocol,
     hostname: this.host,
@@ -54,11 +54,15 @@ Client.prototype.execute = function(queryString, callback) {
     headers: headers,
     json: {"queryType": "SQL", "query": queryString}
   }
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      console.log('victory')
-      callback(null, body);
-    } //TODO Add error handling
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve(body);
+      } else {
+        reject(body);
+      }
+    });
   });
 };
 
@@ -67,7 +71,7 @@ Client.prototype.getSchemata = function() {
 }
 
 
-Client.prototype.query = function(queryString, callback) {
+Client.prototype.query = function(queryString) {
   var href = url.format({
     protocol: this.protocol,
     hostname: 'localhost',
@@ -84,14 +88,19 @@ Client.prototype.query = function(queryString, callback) {
     headers: headers,
     json: {"queryType": "SQL", "query": queryString}
   }
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      callback(null, body);
-    } //TODO Add error handling
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve(body);
+      } else {
+        reject(body);
+      }
+    });
   });
 };
 
-Client.prototype.query = function(queryString, callback) {
+Client.prototype.query = function(queryString) {
   var href = url.format({
     protocol: this.protocol,
     hostname: this.host,
@@ -108,14 +117,19 @@ Client.prototype.query = function(queryString, callback) {
     headers: headers,
     json: {"queryType": "SQL", "query": queryString}
   }
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      callback(null, body);
-    } //TODO Add error handling
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve(body);
+      } else {
+        reject(body);
+      }
+    });
   });
 };
 
-Client.prototype.plan = function(queryString, callback) {
+Client.prototype.plan = function(queryString) {
   var href = url.format({
     protocol: this.protocol,
     hostname: this.host,
@@ -132,10 +146,15 @@ Client.prototype.plan = function(queryString, callback) {
     headers: headers,
     json: {"queryType": "SQL", "query": "EXPLAIN PLAN FOR " + queryString}
   }
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      callback(null, body);
-    } //TODO Add error handling
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve(body);
+      } else {
+        reject(body);
+      }
+    });
   });
 };
 
@@ -151,10 +170,15 @@ Client.prototype.metrics = function( callback ){
     uri: href
   }
 
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      callback(null, response, body);
-    }
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve((response, body));
+      } else {
+        reject(body);
+      }
+    });
   });
 }
 
@@ -170,10 +194,15 @@ Client.prototype.storage = function( callback ){
     uri: href
   }
 
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      callback(null, response, body);
-    }
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve((response, body));
+      } else {
+        reject(body);
+      }
+    });
   });
 }
 
@@ -189,10 +218,15 @@ Client.prototype.threads = function( callback ){
     uri: href
   }
 
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      callback(null, response, body);
-    }
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve((response, body));
+      } else {
+        reject(body);
+      }
+    });
   });
 }
 
@@ -208,14 +242,19 @@ Client.prototype.options = function( callback ){
     uri: href
   }
 
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      callback(null, response, body);
-    }
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve((response, body));
+      } else {
+        reject(body);
+      }
+    });
   });
 }
 
-Client.prototype.storage_detail = function( pluginName, callback ){
+Client.prototype.storage_detail = function( pluginName ){
   var href = url.format({
     protocol: this.protocol,
     hostname: this.host,
@@ -227,14 +266,19 @@ Client.prototype.storage_detail = function( pluginName, callback ){
     uri: href
   }
 
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      callback(null, response, body);
-    }
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve((response, body));
+      } else {
+        reject(body);
+      }
+    });
   });
 }
 
-Client.prototype.storage_enable = function( pluginName, value, callback ){
+Client.prototype.storage_enable = function( pluginName, value ){
   value = value.toLowerCase();
   if( value != "true" && value != "false" ){
     callback(new Error( "the Value must be either true or false"));
@@ -250,15 +294,20 @@ Client.prototype.storage_enable = function( pluginName, value, callback ){
       uri: href
     }
 
-    request(queryOptions, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        callback(null, response, body);
-      }
+    return new Promise((resolve, reject) => {
+      request(queryOptions, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('victory')
+          resolve((response, body));
+        } else {
+          reject(body);
+        }
+      });
     });
   }
 }
 
-Client.prototype.storage_update = function(plugin_name, config, callback) {
+Client.prototype.storage_update = function(plugin_name, config) {
   var href = url.format({
     protocol: this.protocol,
     hostname: 'localhost',
@@ -275,11 +324,16 @@ Client.prototype.storage_update = function(plugin_name, config, callback) {
     headers: headers,
     json: config
   }
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      console.log('victory')
-      callback(null, body);
-    }
+
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve(body);
+      } else {
+        reject(body);
+      }
+    });
   });
 };
 
@@ -294,14 +348,20 @@ Client.prototype.profiles = function( callback ){
   var queryOptions = {
     uri: href
   }
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      callback(null, response, body);
-    }
+
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve((response, body));
+      } else {
+        reject(body);
+      }
+    });
   });
 }
 
-Client.prototype.profile = function( queryID, callback ){
+Client.prototype.profile = function( queryID ){
   var href = url.format({
     protocol: this.protocol,
     hostname: this.host,
@@ -312,14 +372,20 @@ Client.prototype.profile = function( queryID, callback ){
   var queryOptions = {
     uri: href
   }
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      callback(null, response, body);
-    }
+
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve((response, body));
+      } else {
+        reject(body);
+      }
+    });
   });
 }
 
-Client.prototype.profile_cancel = function( queryID, callback ){
+Client.prototype.profile_cancel = function( queryID ){
   var href = url.format({
     protocol: this.protocol,
     hostname: this.host,
@@ -330,10 +396,16 @@ Client.prototype.profile_cancel = function( queryID, callback ){
   var queryOptions = {
     uri: href
   }
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      callback(null, response, body);
-    }
+
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve((response, body));
+      } else {
+        reject(body);
+      }
+    });
   });
 }
 
@@ -349,9 +421,14 @@ Client.prototype.cluster = function( callback ){
     uri: href
   }
 
-  request(queryOptions, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      callback(null, response, body);
-    }
+  return new Promise((resolve, reject) => {
+    request(queryOptions, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('victory')
+        resolve((response, body));
+      } else {
+        reject(body);
+      }
+    });
   });
 }
