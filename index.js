@@ -57,7 +57,6 @@ Client.prototype.execute = function(queryString) {
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve(body);
       } else {
         reject(body);
@@ -91,7 +90,6 @@ Client.prototype.query = function(queryString) {
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve(body);
       } else {
         reject(body);
@@ -120,7 +118,6 @@ Client.prototype.query = function(queryString) {
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve(body);
       } else {
         reject(body);
@@ -149,7 +146,6 @@ Client.prototype.plan = function(queryString) {
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve(body);
       } else {
         reject(body);
@@ -173,7 +169,6 @@ Client.prototype.metrics = function( callback ){
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve((response, body));
       } else {
         reject(body);
@@ -197,7 +192,6 @@ Client.prototype.storage = function( callback ){
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve((response, body));
       } else {
         reject(body);
@@ -221,7 +215,6 @@ Client.prototype.threads = function( callback ){
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve((response, body));
       } else {
         reject(body);
@@ -245,7 +238,6 @@ Client.prototype.options = function( callback ){
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve((response, body));
       } else {
         reject(body);
@@ -269,7 +261,6 @@ Client.prototype.storage_detail = function( pluginName ){
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve((response, body));
       } else {
         reject(body);
@@ -297,7 +288,6 @@ Client.prototype.storage_enable = function( pluginName, value ){
     return new Promise((resolve, reject) => {
       request(queryOptions, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-          console.log('victory')
           resolve((response, body));
         } else {
           reject(body);
@@ -328,7 +318,6 @@ Client.prototype.storage_update = function(plugin_name, config) {
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve(body);
       } else {
         reject(body);
@@ -352,7 +341,6 @@ Client.prototype.profiles = function( callback ){
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve((response, body));
       } else {
         reject(body);
@@ -376,7 +364,6 @@ Client.prototype.profile = function( queryID ){
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve((response, body));
       } else {
         reject(body);
@@ -400,7 +387,6 @@ Client.prototype.profile_cancel = function( queryID ){
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve((response, body));
       } else {
         reject(body);
@@ -424,7 +410,6 @@ Client.prototype.cluster = function( callback ){
   return new Promise((resolve, reject) => {
     request(queryOptions, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('victory')
         resolve((response, body));
       } else {
         reject(body);
