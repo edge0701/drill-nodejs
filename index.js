@@ -69,35 +69,6 @@ Client.prototype.getSchemata = function() {
   //query('SHOW DATABASES')
 }
 
-
-Client.prototype.query = function(queryString) {
-  var href = url.format({
-    protocol: this.protocol,
-    hostname: 'localhost',
-    pathname: '/query.json',
-    port: this.port
-  })
-  var headers = {
-    'Content-Type': 'application/json; charset=UTF-8',
-    'Accept':'application/json'
-  }
-  var queryOptions = {
-    uri: href,
-    method: 'POST',
-    headers: headers,
-    json: {"queryType": "SQL", "query": queryString}
-  }
-  return new Promise((resolve, reject) => {
-    request(queryOptions, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        resolve(body);
-      } else {
-        reject(error || response);
-      }
-    });
-  });
-};
-
 Client.prototype.query = function(queryString) {
   var href = url.format({
     protocol: this.protocol,
