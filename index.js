@@ -59,7 +59,7 @@ Client.prototype.execute = function(queryString) {
       if (!error && response.statusCode == 200) {
         resolve(body);
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -92,7 +92,7 @@ Client.prototype.query = function(queryString) {
       if (!error && response.statusCode == 200) {
         resolve(body);
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -120,7 +120,7 @@ Client.prototype.query = function(queryString) {
       if (!error && response.statusCode == 200) {
         resolve(body);
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -148,7 +148,7 @@ Client.prototype.plan = function(queryString) {
       if (!error && response.statusCode == 200) {
         resolve(body);
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -171,7 +171,7 @@ Client.prototype.metrics = function( callback ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -194,7 +194,7 @@ Client.prototype.storage = function( callback ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -217,7 +217,7 @@ Client.prototype.threads = function( callback ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -240,7 +240,7 @@ Client.prototype.options = function( callback ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -263,7 +263,7 @@ Client.prototype.storage_detail = function( pluginName ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -290,7 +290,7 @@ Client.prototype.storage_enable = function( pluginName, value ){
         if (!error && response.statusCode == 200) {
           resolve((response, body));
         } else {
-          reject(body);
+          reject(error || response);
         }
       });
     });
@@ -320,7 +320,7 @@ Client.prototype.storage_update = function(plugin_name, config) {
       if (!error && response.statusCode == 200) {
         resolve(body);
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -343,7 +343,7 @@ Client.prototype.profiles = function( callback ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -366,7 +366,7 @@ Client.prototype.profile = function( queryID ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -389,7 +389,7 @@ Client.prototype.profile_cancel = function( queryID ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
@@ -412,7 +412,7 @@ Client.prototype.cluster = function( callback ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(body);
+        reject(error || response);
       }
     });
   });
