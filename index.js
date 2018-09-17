@@ -59,7 +59,7 @@ Client.prototype.execute = function(queryString) {
       if (!error && response.statusCode == 200) {
         resolve(body);
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
@@ -91,7 +91,7 @@ Client.prototype.query = function(queryString) {
       if (!error && response.statusCode == 200) {
         resolve(body);
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
@@ -119,7 +119,7 @@ Client.prototype.plan = function(queryString) {
       if (!error && response.statusCode == 200) {
         resolve(body);
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
@@ -142,7 +142,7 @@ Client.prototype.metrics = function( callback ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
@@ -165,7 +165,7 @@ Client.prototype.storage = function( callback ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
@@ -188,7 +188,7 @@ Client.prototype.threads = function( callback ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
@@ -211,7 +211,7 @@ Client.prototype.options = function( callback ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
@@ -234,7 +234,7 @@ Client.prototype.storage_detail = function( pluginName ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
@@ -261,7 +261,7 @@ Client.prototype.storage_enable = function( pluginName, value ){
         if (!error && response.statusCode == 200) {
           resolve((response, body));
         } else {
-          reject(error || response);
+          reject(error || new Error(response.body.errorMessage));
         }
       });
     });
@@ -291,7 +291,7 @@ Client.prototype.storage_update = function(plugin_name, config) {
       if (!error && response.statusCode == 200) {
         resolve(body);
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
@@ -314,7 +314,7 @@ Client.prototype.profiles = function( callback ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
@@ -337,7 +337,7 @@ Client.prototype.profile = function( queryID ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
@@ -360,7 +360,7 @@ Client.prototype.profile_cancel = function( queryID ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
@@ -383,7 +383,7 @@ Client.prototype.cluster = function( callback ){
       if (!error && response.statusCode == 200) {
         resolve((response, body));
       } else {
-        reject(error || response);
+        reject(error || new Error(response.body.errorMessage));
       }
     });
   });
