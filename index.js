@@ -273,7 +273,7 @@ Client.prototype.storage_update = function(plugin_name, config) {
     protocol: this.protocol,
     hostname: 'localhost',
     pathname: '/storage/' + plugin_name + '.json',
-    port: 8047
+    port: this.port,
   })
   var headers = {
     'Content-Type': 'application/json; charset=UTF-8',
