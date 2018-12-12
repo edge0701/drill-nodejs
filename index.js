@@ -271,7 +271,7 @@ Client.prototype.storage_enable = function( pluginName, value ){
 Client.prototype.storage_update = function(plugin_name, config) {
   var href = url.format({
     protocol: this.protocol,
-    hostname: 'localhost',
+    hostname: this.host,
     pathname: '/storage/' + plugin_name + '.json',
     port: this.port,
   })
