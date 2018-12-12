@@ -25,7 +25,7 @@ var Client = exports.Client = function(args){
     args = {};
 
   this.host = args.host || 'localhost';
-  this.port = args.port || 8074;
+  this.port = args.port || 8047;
   this.user = args.user || process.env.USER;
   this.ssl = args.ssl || false;
 
